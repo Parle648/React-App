@@ -6,8 +6,28 @@ import { DatabaseService } from 'src/database/database.service';
 export class TasksService {
   constructor (private readonly databaseService: DatabaseService) {}
 
-  async create(createTasksDto: Prisma.TasksCreateInput) {
-    return this.databaseService.tasks.create({ data: createTasksDto })
+  async create(createTasksDto: {
+    taskData: Prisma.TasksCreateInput,
+    action: Prisma.ActivitiesCreateInput,
+  }) {
+    const {taskData, action} = createTasksDto;
+
+    const taskInit = this.databaseService.tasks.create({
+      data: {
+        ...taskData,
+        activities: {
+          create: [
+            action
+          ]
+        }
+      },
+      include: {
+        activities: true
+      }
+    });
+
+    return this.databaseService.$transaction
+    ([taskInit])
   }
 
   findAll() {

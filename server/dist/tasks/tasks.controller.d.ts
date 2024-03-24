@@ -3,19 +3,26 @@ import { Prisma } from '@prisma/client';
 export declare class TasksController {
     private readonly tasksService;
     constructor(tasksService: TasksService);
-    create(createTasksDto: Prisma.TasksCreateInput): Promise<{
+    create(createTasksDto: any): Promise<[{
+        activities: {
+            id: number;
+            activity_type: string;
+            from: string;
+            to: string;
+            time: Date;
+            task_id: number;
+        }[];
+    } & {
         id: number;
         list_id: number;
-        activity_id: number;
         status: string;
         deadline: Date;
         priority: string;
         description: string;
-    }>;
+    }]>;
     findAll(): Prisma.PrismaPromise<{
         id: number;
         list_id: number;
-        activity_id: number;
         status: string;
         deadline: Date;
         priority: string;
@@ -24,7 +31,6 @@ export declare class TasksController {
     findOne(id: string): Promise<{
         id: number;
         list_id: number;
-        activity_id: number;
         status: string;
         deadline: Date;
         priority: string;
@@ -33,7 +39,6 @@ export declare class TasksController {
     update(id: string, updateTaskDto: Prisma.TasksUpdateInput): Promise<{
         id: number;
         list_id: number;
-        activity_id: number;
         status: string;
         deadline: Date;
         priority: string;
@@ -42,7 +47,6 @@ export declare class TasksController {
     remove(id: string): Prisma.Prisma__TasksClient<{
         id: number;
         list_id: number;
-        activity_id: number;
         status: string;
         deadline: Date;
         priority: string;

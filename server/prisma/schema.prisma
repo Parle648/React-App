@@ -21,18 +21,21 @@ model Lists {
 model Tasks {
   id Int @id @default(autoincrement())
   list_id Int
-  activity_id Int
   status String
   deadline DateTime
   priority String
   description String
+
+  activities Activities[]
 }
 
 model Activities {
   id Int @unique @id @default(autoincrement())
-  task_id Int
   activity_type String
   from String
   to String
   time DateTime @default(now())
+
+  task   Tasks @relation(fields: [task_id], references: [id])
+  task_id Int
 }

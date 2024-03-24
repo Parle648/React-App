@@ -5,42 +5,42 @@ export declare class ActivitiesController {
     constructor(activitiesService: ActivitiesService);
     create(createActivityDto: Prisma.ActivitiesCreateInput): Promise<{
         id: number;
-        task_id: number;
         activity_type: string;
         from: string;
         to: string;
         time: Date;
+        task_id: number;
     }>;
     findAll(): Prisma.PrismaPromise<{
         id: number;
-        task_id: number;
         activity_type: string;
         from: string;
         to: string;
         time: Date;
+        task_id: number;
     }[]>;
     findOne(id: string): Promise<{
         id: number;
-        task_id: number;
         activity_type: string;
         from: string;
         to: string;
         time: Date;
+        task_id: number;
     }>;
     update(id: string, updateActivityDto: Prisma.ActivitiesUpdateInput): Promise<{
         id: number;
-        task_id: number;
         activity_type: string;
         from: string;
         to: string;
         time: Date;
+        task_id: number;
     }>;
     remove(id: string): Prisma.Prisma__ActivitiesClient<{
         id: number;
-        task_id: number;
         activity_type: string;
         from: string;
         to: string;
         time: Date;
+        task_id: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

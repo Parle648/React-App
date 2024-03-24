@@ -7,7 +7,7 @@ export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
-  create(@Body() createTasksDto: Prisma.TasksCreateInput) {
+  create(@Body() createTasksDto: any) {
     return this.tasksService.create(createTasksDto);
   }
 

@@ -17,7 +17,21 @@ let TasksService = class TasksService {
         this.databaseService = databaseService;
     }
     async create(createTasksDto) {
-        return this.databaseService.tasks.create({ data: createTasksDto });
+        const { taskData, action } = createTasksDto;
+        const taskInit = this.databaseService.tasks.create({
+            data: {
+                ...taskData,
+                activities: {
+                    create: [
+                        action
+                    ]
+                }
+            },
+            include: {
+                activities: true
+            }
+        });
+        return this.databaseService.$transaction([taskInit]);
     }
     findAll() {
         return this.databaseService.tasks.findMany({});
