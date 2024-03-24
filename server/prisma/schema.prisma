@@ -31,6 +31,7 @@ model Tasks {
 
 model Activities {
   id Int @unique @id @default(autoincrement())
+  list_activities_id Int
   activity_type String
   from String
   to String

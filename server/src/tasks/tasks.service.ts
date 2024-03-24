@@ -40,12 +40,27 @@ export class TasksService {
     })
   }
 
-  async update(id: number, updateTasksDto: Prisma.TasksUpdateInput) {
+  async update(id: number, updateTasksDto: {
+    taskData: Prisma.TasksCreateInput,
+    action: Prisma.ActivitiesCreateInput,
+  }) {
+    const {taskData, action} = updateTasksDto;
+
     return this.databaseService.tasks.update({
       where: {
         id,
       },
-      data: updateTasksDto
+      data: {
+        ...taskData,
+        activities: {
+          create: [
+            action
+          ]
+        }
+      },
+      include: {
+        activities: true
+      }
     })
   }
 

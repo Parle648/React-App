@@ -6,6 +6,7 @@ export declare class TasksController {
     create(createTasksDto: any): Promise<[{
         activities: {
             id: number;
+            list_activities_id: number;
             activity_type: string;
             from: string;
             to: string;
@@ -36,7 +37,20 @@ export declare class TasksController {
         priority: string;
         description: string;
     }>;
-    update(id: string, updateTaskDto: Prisma.TasksUpdateInput): Promise<{
+    update(id: string, updateTaskDto: {
+        taskData: Prisma.TasksCreateInput;
+        action: Prisma.ActivitiesCreateInput;
+    }): Promise<{
+        activities: {
+            id: number;
+            list_activities_id: number;
+            activity_type: string;
+            from: string;
+            to: string;
+            time: Date;
+            task_id: number;
+        }[];
+    } & {
         id: number;
         list_id: number;
         status: string;

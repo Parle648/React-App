@@ -5,6 +5,7 @@ export declare class ActivitiesService {
     constructor(databaseService: DatabaseService);
     create(createActivityDto: Prisma.ActivitiesCreateInput): Promise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -13,6 +14,7 @@ export declare class ActivitiesService {
     }>;
     findAll(): Prisma.PrismaPromise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -21,6 +23,7 @@ export declare class ActivitiesService {
     }[]>;
     findOne(id: number): Promise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -29,6 +32,7 @@ export declare class ActivitiesService {
     }>;
     update(id: number, updateActivityDto: Prisma.ActivitiesUpdateInput): Promise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -37,6 +41,7 @@ export declare class ActivitiesService {
     }>;
     remove(id: number): Prisma.Prisma__ActivitiesClient<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;

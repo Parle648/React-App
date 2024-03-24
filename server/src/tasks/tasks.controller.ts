@@ -22,7 +22,10 @@ export class TasksController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTaskDto: Prisma.TasksUpdateInput) {
+  update(@Param('id') id: string, @Body() updateTaskDto: {
+    taskData: Prisma.TasksCreateInput,
+    action: Prisma.ActivitiesCreateInput,
+  }) {
     return this.tasksService.update(+id, updateTaskDto);
   }
 

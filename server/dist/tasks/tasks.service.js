@@ -42,11 +42,22 @@ let TasksService = class TasksService {
         });
     }
     async update(id, updateTasksDto) {
+        const { taskData, action } = updateTasksDto;
         return this.databaseService.tasks.update({
             where: {
                 id,
             },
-            data: updateTasksDto
+            data: {
+                ...taskData,
+                activities: {
+                    create: [
+                        action
+                    ]
+                }
+            },
+            include: {
+                activities: true
+            }
         });
     }
     remove(id) {

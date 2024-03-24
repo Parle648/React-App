@@ -5,6 +5,7 @@ export declare class ActivitiesController {
     constructor(activitiesService: ActivitiesService);
     create(createActivityDto: Prisma.ActivitiesCreateInput): Promise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -13,6 +14,7 @@ export declare class ActivitiesController {
     }>;
     findAll(): Prisma.PrismaPromise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -21,6 +23,7 @@ export declare class ActivitiesController {
     }[]>;
     findOne(id: string): Promise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -29,6 +32,7 @@ export declare class ActivitiesController {
     }>;
     update(id: string, updateActivityDto: Prisma.ActivitiesUpdateInput): Promise<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
@@ -37,6 +41,7 @@ export declare class ActivitiesController {
     }>;
     remove(id: string): Prisma.Prisma__ActivitiesClient<{
         id: number;
+        list_activities_id: number;
         activity_type: string;
         from: string;
         to: string;
