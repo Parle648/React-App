@@ -15,9 +15,11 @@ const database_service_1 = require("../database/database.service");
 let ListsService = class ListsService {
     constructor(dataBaseService) {
         this.dataBaseService = dataBaseService;
+        this.logger = new common_1.Logger('ListsService');
     }
     async create(createListDto) {
         const { listData, action } = createListDto;
+        this.logger.log(`User create list "${action.list_name}". DTO = ${JSON.stringify(createListDto)}`);
         const createList = await this.dataBaseService.lists.create({
             data: {
                 list_name: listData.list_name,
@@ -34,6 +36,7 @@ let ListsService = class ListsService {
         return createList;
     }
     async findAll() {
+        this.logger.log(`User get all lists`);
         return this.dataBaseService.lists.findMany();
     }
     async findOne(id) {
@@ -45,6 +48,7 @@ let ListsService = class ListsService {
     }
     async update(id, updateListDto) {
         const { listData, action } = updateListDto;
+        this.logger.log(`User update list "${action.list_name}". DTO = ${JSON.stringify(updateListDto)}`);
         return this.dataBaseService.lists.update({
             where: {
                 id,
@@ -63,6 +67,7 @@ let ListsService = class ListsService {
         });
     }
     async remove(id) {
+        this.logger.log(`User delete list which id = ${id}`);
         return this.dataBaseService.lists.delete({
             where: {
                 id,

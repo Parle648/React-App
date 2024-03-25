@@ -1,8 +1,10 @@
+import { Logger } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { DatabaseService } from 'src/database/database.service';
 export declare class ListsService {
     private readonly dataBaseService;
     constructor(dataBaseService: DatabaseService);
+    logger: Logger;
     create(createListDto: {
         listData: Prisma.ListsCreateInput;
         action: Prisma.ListActivitiesCreateInput;
@@ -10,6 +12,7 @@ export declare class ListsService {
         listActivities: {
             id: number;
             activity_type: string;
+            list_name: string;
             from: string;
             to: string;
             time: Date;
@@ -34,6 +37,7 @@ export declare class ListsService {
         listActivities: {
             id: number;
             activity_type: string;
+            list_name: string;
             from: string;
             to: string;
             time: Date;

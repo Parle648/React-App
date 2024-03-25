@@ -6,6 +6,7 @@ export declare class ListsController {
         listActivities: {
             id: number;
             activity_type: string;
+            list_name: string;
             from: string;
             to: string;
             time: Date;
@@ -27,6 +28,7 @@ export declare class ListsController {
         listActivities: {
             id: number;
             activity_type: string;
+            list_name: string;
             from: string;
             to: string;
             time: Date;

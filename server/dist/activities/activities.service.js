@@ -15,16 +15,19 @@ const database_service_1 = require("../database/database.service");
 let ActivitiesService = class ActivitiesService {
     constructor(databaseService) {
         this.databaseService = databaseService;
+        this.logger = new common_1.Logger('ActivitiesService');
     }
     async create(createActivityDto) {
         return this.databaseService.tasksActivities.create({ data: createActivityDto });
     }
     findAll() {
+        this.logger.log(`User get all activities`);
         const tasksActivities = this.databaseService.tasksActivities.findMany();
         const lsitsActivities = this.databaseService.listActivities.findMany();
         return this.databaseService.$transaction([tasksActivities, lsitsActivities]);
     }
     async findOne(id) {
+        this.logger.log(`User get activities for task which id = ${id}`);
         return this.databaseService.tasksActivities.findMany({
             where: {
                 task_id: id

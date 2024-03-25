@@ -23,6 +23,7 @@ export declare class ActivitiesController {
     }[], {
         id: number;
         activity_type: string;
+        list_name: string;
         from: string;
         to: string;
         time: Date;

@@ -34,6 +34,7 @@ model Tasks {
 model ListActivities {
   id Int @unique @id @default(autoincrement())
   activity_type String
+  list_name String
   from String
   to String
   time DateTime @default(now())

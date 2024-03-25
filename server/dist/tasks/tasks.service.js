@@ -15,9 +15,11 @@ const database_service_1 = require("../database/database.service");
 let TasksService = class TasksService {
     constructor(databaseService) {
         this.databaseService = databaseService;
+        this.logger = new common_1.Logger('TasksService');
     }
     async create(createTasksDto) {
         const { taskData, action } = createTasksDto;
+        this.logger.log(`User create task with name - "${action.task_name}". DTO is ${JSON.stringify(createTasksDto)}`);
         const taskInit = this.databaseService.tasks.create({
             data: {
                 ...taskData,
@@ -34,15 +36,18 @@ let TasksService = class TasksService {
         return this.databaseService.$transaction([taskInit]);
     }
     findAll() {
+        this.logger.log(`User get all tasks`);
         return this.databaseService.tasks.findMany({});
     }
     async findOne(id) {
+        this.logger.log(`User get specific task which id = ${id}`);
         return this.databaseService.tasks.findUnique({
             where: { id }
         });
     }
     async update(id, updateTasksDto) {
         const { taskData, action } = updateTasksDto;
+        this.logger.log(`User update task with name - "${action.task_name}". DTO is ${JSON.stringify(updateTasksDto)}`);
         return this.databaseService.tasks.update({
             where: {
                 id,
@@ -61,7 +66,7 @@ let TasksService = class TasksService {
         });
     }
     remove(id) {
-        console.log(id);
+        this.logger.log(`User delete task which id = ${id}`);
         return this.databaseService.tasks.delete({
             where: { id },
         });

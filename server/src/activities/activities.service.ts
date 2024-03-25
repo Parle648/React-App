@@ -1,4 +1,4 @@
-import { Injectable, createParamDecorator } from '@nestjs/common';
+import { Injectable, Logger, createParamDecorator } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { DatabaseService } from 'src/database/database.service';
 
@@ -6,11 +6,16 @@ import { DatabaseService } from 'src/database/database.service';
 export class ActivitiesService {
   constructor (private readonly databaseService: DatabaseService) {}
 
+  logger = new Logger('ActivitiesService');
+
   async create(createActivityDto: Prisma.TasksActivitiesCreateInput) {
     return this.databaseService.tasksActivities.create({ data: createActivityDto })
   }
 
   findAll() {
+
+    this.logger.log(`User get all activities`)
+
     const tasksActivities = this.databaseService.tasksActivities.findMany();
     const lsitsActivities = this.databaseService.listActivities.findMany();
 
@@ -18,6 +23,7 @@ export class ActivitiesService {
   }
 
   async findOne(id: number) {
+    this.logger.log(`User get activities for task which id = ${id}`)
     return this.databaseService.tasksActivities.findMany({
       where: { 
         task_id: id 
