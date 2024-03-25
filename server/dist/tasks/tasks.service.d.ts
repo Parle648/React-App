@@ -8,69 +8,37 @@ export declare class TasksService {
     create(createTasksDto: {
         taskData: Prisma.TasksCreateInput;
         action: Prisma.TasksActivitiesCreateInput;
-    }): Promise<[{
-        activities: {
+    }): Promise<{
+        status: number;
+    }>;
+    findAll(): Promise<{
+        status: number;
+        tasks: {
             id: number;
-            activity_type: string;
-            task_name: string;
-            from: string;
-            to: string;
-            time: Date;
-            task_id: number;
+            list_id: number;
+            name: string;
+            status: string;
+            deadline: Date;
+            priority: string;
+            description: string;
         }[];
-    } & {
-        id: number;
-        list_id: number;
-        name: string;
-        status: string;
-        deadline: Date;
-        priority: string;
-        description: string;
-    }]>;
-    findAll(): Prisma.PrismaPromise<{
-        id: number;
-        list_id: number;
-        name: string;
-        status: string;
-        deadline: Date;
-        priority: string;
-        description: string;
-    }[]>;
+    }>;
     findOne(id: number): Promise<{
-        id: number;
-        list_id: number;
-        name: string;
-        status: string;
-        deadline: Date;
-        priority: string;
-        description: string;
+        status: number;
+        tasks: {
+            id: number;
+            list_id: number;
+            name: string;
+            status: string;
+            deadline: Date;
+            priority: string;
+            description: string;
+        };
     }>;
     update(id: number, updateTasksDto: any): Promise<{
-        activities: {
-            id: number;
-            activity_type: string;
-            task_name: string;
-            from: string;
-            to: string;
-            time: Date;
-            task_id: number;
-        }[];
-    } & {
-        id: number;
-        list_id: number;
-        name: string;
-        status: string;
-        deadline: Date;
-        priority: string;
-        description: string;
+        status: number;
     }>;
-    remove(id: number): Prisma.Prisma__TasksClient<{
-        id: number;
-        list_id: number;
-        name: string;
-        status: string;
-        deadline: Date;
-        priority: string;
-        description: string;
-    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
+    remove(id: number): Promise<{
+        status: number;
+    }>;
 }
