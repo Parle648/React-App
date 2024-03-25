@@ -14,7 +14,11 @@ const database_module_1 = require("./database/database.module");
 const activities_module_1 = require("./activities/activities.module");
 const tasks_module_1 = require("./tasks/tasks.module");
 const lists_module_1 = require("./lists/lists.module");
+const cors_middlewares_1 = require("./middlewares/cors.middlewares");
 let AppModule = class AppModule {
+    configure(consumer) {
+        consumer.apply(cors_middlewares_1.CorsMiddleware).forRoutes('*');
+    }
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
