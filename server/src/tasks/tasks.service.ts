@@ -8,7 +8,7 @@ export class TasksService {
 
   async create(createTasksDto: {
     taskData: Prisma.TasksCreateInput,
-    action: Prisma.ActivitiesCreateInput,
+    action: Prisma.TasksActivitiesCreateInput,
   }) {
     const {taskData, action} = createTasksDto;
 
@@ -40,33 +40,32 @@ export class TasksService {
     })
   }
 
-  async update(id: number, updateTasksDto: {
-    taskData: Prisma.TasksCreateInput,
-    action: Prisma.ActivitiesCreateInput,
-  }) {
-    const {taskData, action} = updateTasksDto;
-
-    return this.databaseService.tasks.update({
-      where: {
-        id,
-      },
-      data: {
-        ...taskData,
-        activities: {
-          create: [
-            action
-          ]
-        }
-      },
-      include: {
-        activities: true
-      }
-    })
+  async update(id: number, updateTasksDto) {
+    const { taskData, action } = updateTasksDto;
+        return this.databaseService.tasks.update({
+            where: {
+                id,
+            },
+            data: {
+                ...taskData,
+                activities: {
+                    create: [
+                        action
+                    ]
+                }
+            },
+            include: {
+                activities: true
+            }
+        });
   }
 
   remove(id: number) {
+    console.log(id);
+    
     return this.databaseService.tasks.delete({
-      where: { id }
+      where: { id },
+
     })
   }
 }

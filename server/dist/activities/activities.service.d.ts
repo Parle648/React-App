@@ -3,46 +3,53 @@ import { DatabaseService } from 'src/database/database.service';
 export declare class ActivitiesService {
     private readonly databaseService;
     constructor(databaseService: DatabaseService);
-    create(createActivityDto: Prisma.ActivitiesCreateInput): Promise<{
+    create(createActivityDto: Prisma.TasksActivitiesCreateInput): Promise<{
         id: number;
-        list_activities_id: number;
         activity_type: string;
+        task_name: string;
         from: string;
         to: string;
         time: Date;
         task_id: number;
     }>;
-    findAll(): Prisma.PrismaPromise<{
+    findAll(): Promise<[{
         id: number;
-        list_activities_id: number;
         activity_type: string;
+        task_name: string;
+        from: string;
+        to: string;
+        time: Date;
+        task_id: number;
+    }[], {
+        id: number;
+        activity_type: string;
+        from: string;
+        to: string;
+        time: Date;
+        list_id: number;
+    }[]]>;
+    findOne(id: number): Promise<{
+        id: number;
+        activity_type: string;
+        task_name: string;
         from: string;
         to: string;
         time: Date;
         task_id: number;
     }[]>;
-    findOne(id: number): Promise<{
+    update(id: number, updateActivityDto: Prisma.TasksActivitiesCreateInput): Promise<{
         id: number;
-        list_activities_id: number;
         activity_type: string;
+        task_name: string;
         from: string;
         to: string;
         time: Date;
         task_id: number;
     }>;
-    update(id: number, updateActivityDto: Prisma.ActivitiesUpdateInput): Promise<{
+    remove(id: number): Prisma.Prisma__TasksActivitiesClient<{
         id: number;
-        list_activities_id: number;
         activity_type: string;
-        from: string;
-        to: string;
-        time: Date;
-        task_id: number;
-    }>;
-    remove(id: number): Prisma.Prisma__ActivitiesClient<{
-        id: number;
-        list_activities_id: number;
-        activity_type: string;
+        task_name: string;
         from: string;
         to: string;
         time: Date;

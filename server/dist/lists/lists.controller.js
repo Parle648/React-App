@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListsController = void 0;
 const common_1 = require("@nestjs/common");
 const lists_service_1 = require("./lists.service");
-const client_1 = require("@prisma/client");
 let ListsController = class ListsController {
     constructor(listsService) {
         this.listsService = listsService;

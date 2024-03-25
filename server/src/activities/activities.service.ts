@@ -6,22 +6,27 @@ import { DatabaseService } from 'src/database/database.service';
 export class ActivitiesService {
   constructor (private readonly databaseService: DatabaseService) {}
 
-  async create(createActivityDto: Prisma.ActivitiesCreateInput) {
-    return this.databaseService.activities.create({ data: createActivityDto })
+  async create(createActivityDto: Prisma.TasksActivitiesCreateInput) {
+    return this.databaseService.tasksActivities.create({ data: createActivityDto })
   }
 
   findAll() {
-    return this.databaseService.activities.findMany({})
+    const tasksActivities = this.databaseService.tasksActivities.findMany();
+    const lsitsActivities = this.databaseService.listActivities.findMany();
+
+    return this.databaseService.$transaction([tasksActivities, lsitsActivities])
   }
 
   async findOne(id: number) {
-    return this.databaseService.activities.findUnique({
-      where: { id }
+    return this.databaseService.tasksActivities.findMany({
+      where: { 
+        task_id: id 
+      }
     })
   }
 
-  async update(id: number, updateActivityDto: Prisma.ActivitiesUpdateInput) {
-    return this.databaseService.activities.update({
+  async update(id: number, updateActivityDto: Prisma.TasksActivitiesCreateInput) {
+    return this.databaseService.tasksActivities.update({
       where: {
         id,
       },
@@ -30,7 +35,7 @@ export class ActivitiesService {
   }
 
   remove(id: number) {
-    return this.databaseService.activities.delete({
+    return this.databaseService.tasksActivities.delete({
       where: { id }
     })
   }

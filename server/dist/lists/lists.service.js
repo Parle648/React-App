@@ -17,7 +17,21 @@ let ListsService = class ListsService {
         this.dataBaseService = dataBaseService;
     }
     async create(createListDto) {
-        return this.dataBaseService.lists.create({ data: createListDto });
+        const { listData, action } = createListDto;
+        const createList = await this.dataBaseService.lists.create({
+            data: {
+                list_name: listData.list_name,
+                listActivities: {
+                    create: [
+                        action
+                    ]
+                }
+            },
+            include: {
+                listActivities: true
+            }
+        });
+        return createList;
     }
     async findAll() {
         return this.dataBaseService.lists.findMany();
@@ -30,11 +44,22 @@ let ListsService = class ListsService {
         });
     }
     async update(id, updateListDto) {
+        const { listData, action } = updateListDto;
         return this.dataBaseService.lists.update({
             where: {
                 id,
             },
-            data: updateListDto
+            data: {
+                list_name: listData.list_name,
+                listActivities: {
+                    create: [
+                        action
+                    ]
+                }
+            },
+            include: {
+                listActivities: true
+            }
         });
     }
     async remove(id) {

@@ -7,7 +7,7 @@ export class ListsController {
   constructor(private readonly listsService: ListsService) {}
 
   @Post()
-  create(@Body() createListDto: Prisma.ListsCreateInput) {
+  create(@Body() createListDto: any) {
     return this.listsService.create(createListDto);
   }
 
@@ -22,7 +22,7 @@ export class ListsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateListDto: Prisma.ListsCreateInput) {
+  update(@Param('id') id: string, @Body() updateListDto: any) {
     return this.listsService.update(+id, updateListDto);
   }
 

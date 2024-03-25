@@ -1,9 +1,17 @@
 import { ListsService } from './lists.service';
-import { Prisma } from '@prisma/client';
 export declare class ListsController {
     private readonly listsService;
     constructor(listsService: ListsService);
-    create(createListDto: Prisma.ListsCreateInput): Promise<{
+    create(createListDto: any): Promise<{
+        listActivities: {
+            id: number;
+            activity_type: string;
+            from: string;
+            to: string;
+            time: Date;
+            list_id: number;
+        }[];
+    } & {
         id: number;
         list_name: string;
     }>;
@@ -15,7 +23,16 @@ export declare class ListsController {
         id: number;
         list_name: string;
     }>;
-    update(id: string, updateListDto: Prisma.ListsCreateInput): Promise<{
+    update(id: string, updateListDto: any): Promise<{
+        listActivities: {
+            id: number;
+            activity_type: string;
+            from: string;
+            to: string;
+            time: Date;
+            list_id: number;
+        }[];
+    } & {
         id: number;
         list_name: string;
     }>;

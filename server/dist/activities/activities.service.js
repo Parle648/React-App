@@ -17,18 +17,22 @@ let ActivitiesService = class ActivitiesService {
         this.databaseService = databaseService;
     }
     async create(createActivityDto) {
-        return this.databaseService.activities.create({ data: createActivityDto });
+        return this.databaseService.tasksActivities.create({ data: createActivityDto });
     }
     findAll() {
-        return this.databaseService.activities.findMany({});
+        const tasksActivities = this.databaseService.tasksActivities.findMany();
+        const lsitsActivities = this.databaseService.listActivities.findMany();
+        return this.databaseService.$transaction([tasksActivities, lsitsActivities]);
     }
     async findOne(id) {
-        return this.databaseService.activities.findUnique({
-            where: { id }
+        return this.databaseService.tasksActivities.findMany({
+            where: {
+                task_id: id
+            }
         });
     }
     async update(id, updateActivityDto) {
-        return this.databaseService.activities.update({
+        return this.databaseService.tasksActivities.update({
             where: {
                 id,
             },
@@ -36,7 +40,7 @@ let ActivitiesService = class ActivitiesService {
         });
     }
     remove(id) {
-        return this.databaseService.activities.delete({
+        return this.databaseService.tasksActivities.delete({
             where: { id }
         });
     }

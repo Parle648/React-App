@@ -16,27 +16,40 @@ datasource db {
 model Lists {
   id Int @id @default(autoincrement())
   list_name String
+
+  listActivities ListActivities[]
 }
 
 model Tasks {
   id Int @id @default(autoincrement())
   list_id Int
+  name String
   status String
   deadline DateTime
   priority String
   description String
-
-  activities Activities[]
+  activities TasksActivities[]
 }
 
-model Activities {
+model ListActivities {
   id Int @unique @id @default(autoincrement())
-  list_activities_id Int
   activity_type String
   from String
   to String
   time DateTime @default(now())
 
-  task   Tasks @relation(fields: [task_id], references: [id])
-  task_id Int
+  list   Lists? @relation(fields: [list_id], references: [id], onDelete: SetNull)
+  list_id Int?
+}
+
+model TasksActivities {
+  id Int @unique @id @default(autoincrement())
+  activity_type String
+  task_name String
+  from String
+  to String
+  time DateTime @default(now())
+
+  task          Tasks?   @relation(fields: [task_id], references: [id], onDelete: SetNull)
+  task_id       Int?    
 }

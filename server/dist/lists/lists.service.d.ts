@@ -3,7 +3,19 @@ import { DatabaseService } from 'src/database/database.service';
 export declare class ListsService {
     private readonly dataBaseService;
     constructor(dataBaseService: DatabaseService);
-    create(createListDto: Prisma.ListsCreateInput): Promise<{
+    create(createListDto: {
+        listData: Prisma.ListsCreateInput;
+        action: Prisma.ListActivitiesCreateInput;
+    }): Promise<{
+        listActivities: {
+            id: number;
+            activity_type: string;
+            from: string;
+            to: string;
+            time: Date;
+            list_id: number;
+        }[];
+    } & {
         id: number;
         list_name: string;
     }>;
@@ -15,7 +27,19 @@ export declare class ListsService {
         id: number;
         list_name: string;
     }>;
-    update(id: number, updateListDto: Prisma.ListsCreateInput): Promise<{
+    update(id: number, updateListDto: {
+        listData: Prisma.ListsCreateInput;
+        action: Prisma.ListActivitiesCreateInput;
+    }): Promise<{
+        listActivities: {
+            id: number;
+            activity_type: string;
+            from: string;
+            to: string;
+            time: Date;
+            list_id: number;
+        }[];
+    } & {
         id: number;
         list_name: string;
     }>;

@@ -7,7 +7,7 @@ export class ActivitiesController {
   constructor(private readonly activitiesService: ActivitiesService) {}
 
   @Post()
-  create(@Body() createActivityDto: Prisma.ActivitiesCreateInput) {
+  create(@Body() createActivityDto: Prisma.TasksActivitiesCreateInput) {
     return this.activitiesService.create(createActivityDto);
   }
 
@@ -22,7 +22,7 @@ export class ActivitiesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateActivityDto: Prisma.ActivitiesUpdateInput) {
+  update(@Param('id') id: string, @Body() updateActivityDto: Prisma.TasksActivitiesCreateInput) {
     return this.activitiesService.update(+id, updateActivityDto);
   }
 

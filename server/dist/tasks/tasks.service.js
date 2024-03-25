@@ -61,8 +61,9 @@ let TasksService = class TasksService {
         });
     }
     remove(id) {
+        console.log(id);
         return this.databaseService.tasks.delete({
-            where: { id }
+            where: { id },
         });
     }
 };
