@@ -11,10 +11,10 @@ async function bootstrap() {
   
   const app = await NestFactory.create(AppModule);
   
-  // app.use(CorsMiddleware);
-  
   await app.listen(port);
-
+  
+  app.use(CorsMiddleware);
+  
   logger.log(`application started at port: ${port}`)
 }
 bootstrap();
