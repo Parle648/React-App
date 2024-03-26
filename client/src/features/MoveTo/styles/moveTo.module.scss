@@ -1,0 +1,32 @@
+.block {
+    color: #3f3f3f;
+    font-family: "Roboto";
+    font-size: 18px;
+    
+}
+
+.toggleChoises {
+    width: 90%;
+    height: 30px;
+    margin: 0;
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    background-color: rgb(200, 209, 255);
+    
+    &:hover {
+        background-color: rgb(145, 152, 187);
+    }
+}
+
+.arrow {
+    width: 20px;
+    height: 20px;
+}
+
+.list {
+    display: none;
+}

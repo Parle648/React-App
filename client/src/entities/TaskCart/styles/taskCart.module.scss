@@ -1,0 +1,42 @@
+.cart {
+    width: 350px;
+    height: 300px;
+    margin-bottom: 15px;
+    padding: 14px;
+    border-radius: 10px;
+    background-color: aliceblue;
+
+    cursor: pointer;
+    transition: .35s;
+
+    position: relative;
+
+    &:hover {
+        -webkit-box-shadow: 0px 0px 32px 23px rgba(230,230,230,1);
+        -moz-box-shadow: 0px 0px 32px 23px rgba(230,230,230,1);
+        box-shadow: 0px 0px 32px 23px rgba(230,230,230,1);
+    }
+}
+
+.taskName {
+    font-family: "Roboto";
+    padding: 0;
+    margin: 0 0 15px 0;
+    color: #949393;
+}
+
+.description {
+    font-family: "Roboto";
+    padding: 0;
+    margin: 0 0 15px 0;
+    color: #949393;
+
+    max-width: 80%;
+}
+
+.deadline {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
