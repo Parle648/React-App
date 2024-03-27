@@ -4,6 +4,15 @@ export declare class TasksController {
     constructor(tasksService: TasksService);
     create(createTasksDto: any): Promise<{
         status: number;
+        tasks: {
+            id: number;
+            list_id: number;
+            name: string;
+            status: string;
+            deadline: Date;
+            priority: string;
+            description: string;
+        }[];
     }>;
     findAll(): Promise<{
         status: number;

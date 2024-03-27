@@ -1,6 +1,6 @@
 import styles from './styles/list.module.scss';
 import TaskCart from '../TaskCart/TaskCart';
-import AddCartBtn from '../../features/AddCartBtn/AddCartBtn';
+import AddTaskFeature from '../../features/AddTaskFeature/AddTaskFeature';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -12,11 +12,10 @@ const List = ({id, name}: {id: number, name: string}) => {
         setTasksCount(tasks.reduce((amount: number, task: any) => task.list_id === id ? amount + 1 : amount + 0, 0));
     }, [tasks])
     
-    console.log(name, id, tasksCount)
     return (
         <div className={styles.block}>
             <h2 className={styles.listHeader}>{name}: {tasksCount}</h2>
-            <AddCartBtn />
+            <AddTaskFeature list_id={id} />
             <div className="">
                 {!!tasks && tasks.map((task: any) => {
                     if (task.list_id === id) {

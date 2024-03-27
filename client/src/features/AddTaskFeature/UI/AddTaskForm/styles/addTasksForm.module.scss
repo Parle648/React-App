@@ -1,0 +1,17 @@
+.form {
+    display: none;
+    width: 500px;
+    height: 500px;
+    padding: 64px 24px;
+    background-color: rgb(219, 237, 252);
+    position: fixed;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.visible {
+    display: flex;
+    flex-direction: column;
+}
