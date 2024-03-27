@@ -3,6 +3,7 @@ import calendar from '../../shared/assets/img/calendar.png';
 import PriorityBlock from './UI/PriorityBlock/PriorityBlock';
 import MoveTo from '../../features/MoveTo/MoveTo';
 import { TaskCartProps } from './types/taskCartProps';
+import ChangeModal from '../CgangeModal/ChangeModal';
 
 const TaskCart = ({
     priority, 
@@ -12,6 +13,9 @@ const TaskCart = ({
     const date = new Date(deadline).toLocaleDateString();
     return (
         <div className={styles.cart}>
+            <ChangeModal>
+                asd
+            </ChangeModal>
             <h2 className={styles.taskName}>{name}</h2>
             <p className={styles.description}>
                 {description}
