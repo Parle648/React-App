@@ -5,7 +5,7 @@ import AddCartBtn from '../../features/AddCartBtn/AddCartBtn';
 
 const List = ({name}: {name: string}) => {
     return (
-        <div>
+        <div className={styles.block}>
             <h2 className={styles.listHeader}>{name}: 45</h2>
             <AddCartBtn />
             <div className="">
