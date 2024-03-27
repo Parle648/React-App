@@ -15,7 +15,7 @@ export default function createTaskRequest(data: any, list_id: number) {
                         ['deadline']: new Date(data.deadline)
                     },
                     action: {
-                        activity_type: 'create', 
+                        activity_type: 'createTask', 
                         from: '', 
                         to: data.name, 
                         task_name: data.name

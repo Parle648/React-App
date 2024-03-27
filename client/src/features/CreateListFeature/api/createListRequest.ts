@@ -13,7 +13,7 @@ export default function createListRequest(data: createListFormFields) {
                         list_name: data.list_name
                     },
                     action: {
-                        activity_type: "create",
+                        activity_type: "createList",
                         from: "",
                         to: data.list_name,
                         list_name: data.list_name
