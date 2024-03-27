@@ -1,17 +1,20 @@
-import React from 'react';
 import styles from './styles/taskCart.module.scss';
 import calendar from '../../shared/assets/img/calendar.png';
 import PriorityBlock from './UI/PriorityBlock/PriorityBlock';
 import MoveTo from '../../features/MoveTo/MoveTo';
+import { TaskCartProps } from './types/taskCartProps';
 
-const TaskCart = ({priority}: {priority: string}) => {
-    const date = new Date().toLocaleDateString();
+const TaskCart = ({
+    priority, 
+    name, 
+    description, 
+    deadline }: TaskCartProps) => {
+    const date = new Date(deadline).toLocaleDateString();
     return (
         <div className={styles.cart}>
-            <h2 className={styles.taskName}>Task name</h2>
+            <h2 className={styles.taskName}>{name}</h2>
             <p className={styles.description}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit
-                labore voluptatum, porro dolorem provident temporibus.
+                {description}
             </p>
             <p className={styles.deadline}>
                 <img src={calendar} alt="calendar-icon" />
