@@ -3,6 +3,8 @@ import styles from './styles/createListFeature.module.scss';
 import { useForm } from 'react-hook-form';
 import { createListFormFields } from './types/createListFormProps';
 import createListRequest from './api/createListRequest';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLists } from '../../shared/lib/slices/Lists';
 
 const CreateListFeature = () => {
     const {
@@ -10,12 +12,17 @@ const CreateListFeature = () => {
         handleSubmit,
         formState: {
             errors
-        }
+        },
+        reset
     } = useForm<createListFormFields>();
+
+    const dispatch = useDispatch();
+    const lists = useSelector((state: any) => state.Lists.value)
 
     function createList(data: createListFormFields) {
         createListRequest(data)
-        .then((data: any) => console.log(data))
+        .then((data: any) => dispatch(setLists([...lists, {id: data.id, list_name: data.list_name}])))
+        reset()
     }
 
     const [visible, setVisible] = useState(false);

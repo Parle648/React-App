@@ -3,9 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const Lists = createSlice({
     name: 'Lists',
     initialState: {
-        value: {
-            
-        },
+        value: ['list', 'asdas'],
     },
     reducers: {
         setLists(state, {payload}) {
