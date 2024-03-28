@@ -46,6 +46,15 @@ export declare class TasksService {
     }>;
     update(id: number, updateTasksDto: any): Promise<{
         status: number;
+        tasks: {
+            id: number;
+            list_id: number;
+            name: string;
+            status: string;
+            deadline: Date;
+            priority: string;
+            description: string;
+        }[];
     }>;
     remove(id: number, taskDto: any): Promise<{
         status: number;

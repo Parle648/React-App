@@ -11,7 +11,8 @@ const TaskCart = ({
     name, 
     description, 
     deadline,
-    id }: TaskCartProps) => {
+    id,
+    listName }: TaskCartProps) => {
     const date = new Date(deadline).toLocaleDateString();
     return (
         <div className={styles.cart}>
@@ -27,7 +28,7 @@ const TaskCart = ({
                 {date}
             </p>
             <PriorityBlock priority={priority} />
-            <MoveTo />
+            <MoveTo list_name={listName} task_id={id} task_name={name} />
         </div>
     );
 };

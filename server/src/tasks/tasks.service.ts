@@ -108,7 +108,7 @@ export class TasksService {
     const { taskData, action } = updateTasksDto;
 
     try {
-      await this.databaseService.tasks.update({
+      const taskUpdate = await this.databaseService.tasks.update({
         where: {
           id,
         },
@@ -127,7 +127,9 @@ export class TasksService {
 
       this.logger.log(`User update task wich name - "${action.task_name}". DTO is ${JSON.stringify(updateTasksDto)}`)
     
-      return { status: 200 }
+      const tasks = await this.databaseService.tasks.findMany();
+
+      return { status: 200, tasks }
     } catch (error) {
       this.logger.debug(`User failed to update task "${action.task_name}" error = ${error}`)
       

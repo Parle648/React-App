@@ -32,7 +32,8 @@ const List = ({id, name}: {id: number, name: string}) => {
                             name={task.name}
                             description={task.description}
                             deadline={task.deadline}
-                            priority={task.priority} />
+                            priority={task.priority}
+                            listName={name} />
                     }
                 })}
             </div>

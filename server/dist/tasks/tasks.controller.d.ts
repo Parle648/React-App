@@ -40,6 +40,15 @@ export declare class TasksController {
     }>;
     update(id: string, updateTaskDto: any): Promise<{
         status: number;
+        tasks: {
+            id: number;
+            list_id: number;
+            name: string;
+            status: string;
+            deadline: Date;
+            priority: string;
+            description: string;
+        }[];
     }>;
     remove(id: string, taskDto: any): Promise<{
         status: number;

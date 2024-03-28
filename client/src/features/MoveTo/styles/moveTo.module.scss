@@ -29,4 +29,22 @@
 
 .list {
     display: none;
+    background-color: #fff;
+    padding: 35px;
+}
+
+.listVisible {
+    display: block;
+}
+
+.listTitle {
+    margin: 0;
+    padding: 10px;
+    margin-bottom: 12px;
+    color: #3f3f3f;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(106, 190, 255);
+    }
 }
