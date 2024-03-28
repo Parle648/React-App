@@ -40,3 +40,30 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.modalContainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: #838080b4;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.visible {
+    display: flex;
+}
+
+.modalBlock {
+    width: 800px;
+    height: 500px;
+    padding: 46px;
+    background-color: azure;
+    border-radius: 10px;
+
+    position: relative;
+}
