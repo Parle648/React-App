@@ -18,7 +18,8 @@ export default function createTaskRequest(data: any, list_id: number) {
                         activity_type: 'createTask', 
                         from: '', 
                         to: data.name, 
-                        task_name: data.name
+                        task_name: data.name,
+                        task_property: ''
                     }
                 })
             }))

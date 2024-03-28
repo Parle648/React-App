@@ -10,6 +10,7 @@ export declare class ActivitiesController {
         from: string;
         to: string;
         time: Date;
+        task_property: string;
         task_id: number;
     }>;
     findAll(): Promise<[{
@@ -19,6 +20,7 @@ export declare class ActivitiesController {
         from: string;
         to: string;
         time: Date;
+        task_property: string;
         task_id: number;
     }[], {
         id: number;
@@ -36,6 +38,7 @@ export declare class ActivitiesController {
         from: string;
         to: string;
         time: Date;
+        task_property: string;
         task_id: number;
     }[]>;
     update(id: string, updateActivityDto: Prisma.TasksActivitiesCreateInput): Promise<{
@@ -45,6 +48,7 @@ export declare class ActivitiesController {
         from: string;
         to: string;
         time: Date;
+        task_property: string;
         task_id: number;
     }>;
     remove(id: string): Prisma.Prisma__TasksActivitiesClient<{
@@ -54,6 +58,7 @@ export declare class ActivitiesController {
         from: string;
         to: string;
         time: Date;
+        task_property: string;
         task_id: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

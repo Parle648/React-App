@@ -5,6 +5,7 @@ import { MoveTo } from '../../features/MoveTo/MoveTo';
 import { TaskCartProps } from './types/taskCartProps';
 import ChangeModal from '../CgangeModal/ChangeModal';
 import DeleteTaskFeature from '../../features/DeleteTaskFeature/DeleteListFeature';
+import ChangeTaskInfo from '../../features/ChangeTaskInfo/ChangeTaskInfo';
 
 const TaskCart = ({
     priority, 
@@ -18,6 +19,7 @@ const TaskCart = ({
         <div className={styles.cart}>
             <ChangeModal>
                 <DeleteTaskFeature task_id={id} task_name={name} />
+                <ChangeTaskInfo id={id} name={name} deadline={deadline} descryption={description} priority={priority} />
             </ChangeModal>
             <h2 className={styles.taskName}>{name}</h2>
             <p className={styles.description}>

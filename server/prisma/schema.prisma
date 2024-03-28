@@ -50,6 +50,7 @@ model TasksActivities {
   from String
   to String
   time DateTime @default(now())
+  task_property String
 
   task          Tasks?   @relation(fields: [task_id], references: [id], onDelete: SetNull)
   task_id       Int?    

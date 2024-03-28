@@ -155,6 +155,7 @@ export class TasksService {
           "task_name": taskDto.task_name,
           "from": "",
           "to": taskDto.task_name,
+          task_property: ''
         }
       })
 

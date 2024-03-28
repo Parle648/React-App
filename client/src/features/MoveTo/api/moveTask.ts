@@ -17,6 +17,7 @@ export default function moveTask({task_id, new_list_name, old_list_name, list_id
                         from: old_list_name, 
                         to: new_list_name, 
                         task_name: task_name,
+                        task_property: ''
                     }
                 })
             }))
