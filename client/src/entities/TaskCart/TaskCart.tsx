@@ -1,7 +1,7 @@
 import styles from './styles/taskCart.module.scss';
 import calendar from '../../shared/assets/img/calendar.png';
 import PriorityBlock from './UI/PriorityBlock/PriorityBlock';
-import MoveTo from '../../features/MoveTo/MoveTo';
+import { MoveTo } from '../../features/MoveTo/MoveTo';
 import { TaskCartProps } from './types/taskCartProps';
 import ChangeModal from '../CgangeModal/ChangeModal';
 import DeleteTaskFeature from '../../features/DeleteTaskFeature/DeleteListFeature';

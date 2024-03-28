@@ -1,12 +1,6 @@
-export default function moveTask({
-    task_id, new_list_name, old_list_name, list_id, task_name
-}: {
-    task_id: number,
-    new_list_name: string, 
-    old_list_name: string, 
-    list_id: number,
-    task_name: string
-}) {
+import { MoveTaskRequestDto } from "../types/moveTaskRequestDto"
+
+export default function moveTask({task_id, new_list_name, old_list_name, list_id, task_name}: MoveTaskRequestDto) {
     return new Promise((resolve, reject) => {
         try {
             resolve(fetch(`http://localhost:3001/tasks/${task_id}`, {
@@ -19,7 +13,7 @@ export default function moveTask({
                         list_id: +list_id,
                     },
                     action: {
-                        activity_type: 'moveTask', 
+                        activity_type: 'movetask', 
                         from: old_list_name, 
                         to: new_list_name, 
                         task_name: task_name,

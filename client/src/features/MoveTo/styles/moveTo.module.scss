@@ -31,6 +31,8 @@
     display: none;
     background-color: #fff;
     padding: 35px;
+    position: relative;
+    z-index: 2;
 }
 
 .listVisible {
