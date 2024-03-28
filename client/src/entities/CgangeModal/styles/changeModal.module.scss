@@ -4,7 +4,7 @@
     cursor: pointer;
 
     position: absolute;
-    top: 4%;
+    top: 16px;
     right: 12px;
 }
 
@@ -27,6 +27,7 @@
     top: 50px;
 
     display: none;
+    z-index: 5;
 }
 
 .modalActive {

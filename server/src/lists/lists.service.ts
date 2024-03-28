@@ -73,12 +73,22 @@ export class ListsService {
     })
   }
 
-  async remove(id: number) {
+  async remove(id: number, deleteListDto) {
     this.logger.log(`User delete list which id = ${id}`)
-    return this.dataBaseService.lists.delete({
+    const activitiy = this.dataBaseService.listActivities.create({
+      data: {
+        "activity_type": "deleteList",
+        "list_name": deleteListDto.list_name,
+        "from": "",
+        "to": "Important",
+      }
+    })
+    const deletelist = this.dataBaseService.lists.delete({
       where: {
         id,
       }
     })
+
+    return this.dataBaseService.$transaction([activitiy, deletelist])
   }
 }

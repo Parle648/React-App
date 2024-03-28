@@ -31,8 +31,8 @@ let ListsController = class ListsController {
     update(id, updateListDto) {
         return this.listsService.update(+id, updateListDto);
     }
-    remove(id) {
-        return this.listsService.remove(+id);
+    remove(id, deleteListDto) {
+        return this.listsService.remove(+id, deleteListDto);
     }
 };
 exports.ListsController = ListsController;
@@ -67,8 +67,9 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
 ], ListsController.prototype, "remove", null);
 exports.ListsController = ListsController = __decorate([

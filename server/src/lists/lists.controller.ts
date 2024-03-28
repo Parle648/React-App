@@ -27,7 +27,7 @@ export class ListsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.listsService.remove(+id);
+  remove(@Param('id') id: string, @Body() deleteListDto: any) {
+    return this.listsService.remove(+id, deleteListDto);
   }
 }

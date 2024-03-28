@@ -47,8 +47,16 @@ export declare class ListsService {
         id: number;
         list_name: string;
     }>;
-    remove(id: number): Promise<{
+    remove(id: number, deleteListDto: any): Promise<[{
+        id: number;
+        activity_type: string;
+        list_name: string;
+        from: string;
+        to: string;
+        time: Date;
+        list_id: number;
+    }, {
         id: number;
         list_name: string;
-    }>;
+    }]>;
 }

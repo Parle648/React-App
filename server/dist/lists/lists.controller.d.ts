@@ -38,8 +38,16 @@ export declare class ListsController {
         id: number;
         list_name: string;
     }>;
-    remove(id: string): Promise<{
+    remove(id: string, deleteListDto: any): Promise<[{
+        id: number;
+        activity_type: string;
+        list_name: string;
+        from: string;
+        to: string;
+        time: Date;
+        list_id: number;
+    }, {
         id: number;
         list_name: string;
-    }>;
+    }]>;
 }
