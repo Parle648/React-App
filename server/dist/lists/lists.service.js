@@ -49,7 +49,7 @@ let ListsService = class ListsService {
     async update(id, updateListDto) {
         const { listData, action } = updateListDto;
         this.logger.log(`User update list "${action.list_name}". DTO = ${JSON.stringify(updateListDto)}`);
-        return this.dataBaseService.lists.update({
+        const listUpdate = await this.dataBaseService.lists.update({
             where: {
                 id,
             },
@@ -65,6 +65,8 @@ let ListsService = class ListsService {
                 listActivities: true
             }
         });
+        const lists = await this.dataBaseService.lists.findMany();
+        return { status: 200, lists: lists };
     }
     async remove(id, deleteListDto) {
         this.logger.log(`User delete list which id = ${id}`);

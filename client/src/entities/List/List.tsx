@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import ChangeModal from '../CgangeModal/ChangeModal';
 import DeleteListFeature from '../../features/DeleteListFeature/DeleteListFeature';
+import ChangeListNameFeature from '../../features/ChangeListNameFeature/ChangeListNameFeature';
 
 const List = ({id, name}: {id: number, name: string}) => {
     const tasks = useSelector((state: any) => state.Tasks.value)
@@ -19,6 +20,7 @@ const List = ({id, name}: {id: number, name: string}) => {
             <h2 className={styles.listHeader}>{name}: {tasksCount} 
                 <ChangeModal>
                     <DeleteListFeature list_id={id} list_name={name} />
+                    <ChangeListNameFeature id={id} list_name={name} />
                 </ChangeModal></h2>
             <AddTaskFeature list_id={id} />
             <div className="">
