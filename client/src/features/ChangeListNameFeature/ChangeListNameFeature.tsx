@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import renameListRequest from './api/renameListRequest';
 import { useDispatch } from 'react-redux';
 import { setLists } from '../../shared/lib/slices/Lists';
+import plus from '../../shared/assets/img/plus.png';
 
 const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string}) => {
     const [visible, setVisible] = useState<boolean>(false);
@@ -39,7 +40,7 @@ const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string})
 
     return (
         <div>
-            <button className={styles.open} onClick={toggleModal}><b>+</b> Edit</button>
+            <button className={styles.open} onClick={toggleModal}><img className={styles.plus} src={plus} alt="plus" /> Edit</button>
             <div className={`${styles.modalBlock} ${visible && styles.visible}`}>
                 <form className={styles.form} onSubmit={handleSubmit(renameList)} >
                     <button className={styles.close} onClick={toggleModal}>X</button>

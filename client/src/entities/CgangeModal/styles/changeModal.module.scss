@@ -15,15 +15,15 @@
 }
 
 .modal {
-    width: 250px;
-    height: 150px;
+    width: 200px;
+    height: auto;
     padding: 12px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
     position: absolute;
 
-    right: -220px;
+    right: -170px;
     top: 50px;
 
     display: none;
