@@ -31,8 +31,8 @@ let TasksController = class TasksController {
     update(id, updateTaskDto) {
         return this.tasksService.update(+id, updateTaskDto);
     }
-    remove(id) {
-        return this.tasksService.remove(+id);
+    remove(id, taskDto) {
+        return this.tasksService.remove(+id, taskDto);
     }
 };
 exports.TasksController = TasksController;
@@ -67,8 +67,9 @@ __decorate([
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
 ], TasksController.prototype, "remove", null);
 exports.TasksController = TasksController = __decorate([

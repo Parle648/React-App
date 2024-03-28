@@ -26,6 +26,7 @@ const List = ({id, name}: {id: number, name: string}) => {
                     if (task.list_id === id) {
                         return <TaskCart 
                             key={task.id}
+                            id={task.id}
                             name={task.name}
                             description={task.description}
                             deadline={task.deadline}

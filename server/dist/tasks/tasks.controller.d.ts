@@ -41,7 +41,7 @@ export declare class TasksController {
     update(id: string, updateTaskDto: any): Promise<{
         status: number;
     }>;
-    remove(id: string): Promise<{
+    remove(id: string, taskDto: any): Promise<{
         status: number;
     }>;
 }

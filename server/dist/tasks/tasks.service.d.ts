@@ -47,7 +47,7 @@ export declare class TasksService {
     update(id: number, updateTasksDto: any): Promise<{
         status: number;
     }>;
-    remove(id: number): Promise<{
+    remove(id: number, taskDto: any): Promise<{
         status: number;
     }>;
 }

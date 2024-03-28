@@ -130,12 +130,20 @@ let TasksService = class TasksService {
             });
         }
     }
-    async remove(id) {
+    async remove(id, taskDto) {
         try {
             await this.databaseService.tasks.delete({
                 where: { id },
             });
             this.logger.log(`User delete task which id = ${id}`);
+            await this.databaseService.tasksActivities.create({
+                data: {
+                    "activity_type": "deleteTask",
+                    "task_name": taskDto.task_name,
+                    "from": "",
+                    "to": taskDto.task_name,
+                }
+            });
             return { status: 200 };
         }
         catch (error) {

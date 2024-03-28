@@ -4,17 +4,19 @@ import PriorityBlock from './UI/PriorityBlock/PriorityBlock';
 import MoveTo from '../../features/MoveTo/MoveTo';
 import { TaskCartProps } from './types/taskCartProps';
 import ChangeModal from '../CgangeModal/ChangeModal';
+import DeleteTaskFeature from '../../features/DeleteTaskFeature/DeleteListFeature';
 
 const TaskCart = ({
     priority, 
     name, 
     description, 
-    deadline }: TaskCartProps) => {
+    deadline,
+    id }: TaskCartProps) => {
     const date = new Date(deadline).toLocaleDateString();
     return (
         <div className={styles.cart}>
             <ChangeModal>
-                asd
+                <DeleteTaskFeature task_id={id} task_name={name} />
             </ChangeModal>
             <h2 className={styles.taskName}>{name}</h2>
             <p className={styles.description}>
