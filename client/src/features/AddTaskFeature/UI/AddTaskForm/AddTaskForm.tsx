@@ -1,15 +1,11 @@
 import styles from './styles/addTasksForm.module.scss';
 import { useForm } from 'react-hook-form';
 import { CreteTaskFields } from '../../types/taskFormFields';
-import createTaskRequest from '../../api/postTask';
-import { useDispatch } from 'react-redux';
-import { setTasks } from '../../../../shared/lib/slices/Tasks';
 import { TaskFormProps } from '../../types/taskFormProps';
 import { DeadlineInput, DescriptionInput, NameInput, PriorityInput, StatusInput } from '../Inputs/Inputs';
+import createTask from '../../helpers/createTask';
 
 const AddTaskForm = ({visible, children, list_id}: TaskFormProps) => {
-    const dispatch = useDispatch();
-
     const {
         register,
         handleSubmit,
@@ -19,20 +15,13 @@ const AddTaskForm = ({visible, children, list_id}: TaskFormProps) => {
         reset
     } = useForm<CreteTaskFields>();
 
-    function createTask(data: CreteTaskFields) {
-        createTaskRequest(data, list_id)
-        .then((response) => {
-            if (response.status === 200) {
-                dispatch(setTasks(response.tasks))
-            } else {
-                alert('something went wrong make sure tat your data is correct')
-            }
-        })
-        reset()
-    }
+    function sendTaskData(taskDto: CreteTaskFields) {
+        createTask(taskDto, list_id);
+        reset();
+    };
     
     return (
-        <form className={`${styles.form} ${visible && styles.visible}`} onSubmit={handleSubmit(createTask)}>
+        <form className={`${styles.form} ${visible && styles.visible}`} onSubmit={handleSubmit(sendTaskData)}>
             {children}
             <NameInput register={register} errors={errors}/>
             <StatusInput register={register} errors={errors}/>
