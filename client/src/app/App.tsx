@@ -1,13 +1,11 @@
-import CreateListFeature from '../features/CreateListFeature/CreateListFeature';
-import ShowActivitiesFeature from '../features/ShowActivitiesFeature/ShowActivitiesFeature';
 import TaskListsWidget from '../widgets/TaskListsWidget/TaskListsWidget';
+import TaskboardPanel from '../widgets/TaskboardPanel/TaskboardPanel';
 
 function App() {
 
   return (
     <>
-      <ShowActivitiesFeature />
-      <CreateListFeature />
+      <TaskboardPanel />
       <TaskListsWidget />
     </>
   );
