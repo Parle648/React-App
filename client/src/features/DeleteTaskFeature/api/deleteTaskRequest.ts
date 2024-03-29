@@ -1,4 +1,4 @@
-export default function deleteList({task_id, task_name}: {task_id: number, task_name: string}) {
+export default function deleteTaskRequest({task_id, task_name}: {task_id: number, task_name: string}) {
     return new Promise((resolve, reject) => {
         try {
             resolve(fetch(`http://localhost:3001/tasks/${task_id}`, {

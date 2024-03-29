@@ -17,6 +17,7 @@ export const MoveTo = ({ list_name, task_id, task_name }: MoveToProps) => {
     }
 
     function movetask(event: any) {
+        event.stopPropagation();
         if (event.target.innerText !== list_name) {
             moveTask({
                 task_id: task_id,

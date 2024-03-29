@@ -1,5 +1,5 @@
 import styles from './styles/list.module.scss';
-import TaskCart from '../TaskCart/TaskCart';
+import TaskCard from '../TaskCard/TaskCard';
 import AddTaskFeature from '../../features/AddTaskFeature/AddTaskFeature';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -26,7 +26,7 @@ const List = ({id, name}: {id: number, name: string}) => {
             <div className="">
                 {!!tasks && tasks.map((task: any) => {
                     if (task.list_id === id) {
-                        return <TaskCart 
+                        return <TaskCard 
                             key={task.id}
                             id={task.id}
                             name={task.name}
