@@ -11,7 +11,8 @@ export const MoveTo = ({ list_name, task_id, task_name }: MoveToProps) => {
     const lists = useSelector((state: any) => state.Lists.value);
     const [visible, setVisible] = useState<boolean>(false);
 
-    function toggleModal() {
+    function toggleModal(event: any) {
+        event.stopPropagation();
         setVisible(!visible);
     }
 

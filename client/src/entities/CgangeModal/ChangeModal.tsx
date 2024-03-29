@@ -5,7 +5,8 @@ import menu from '../../shared/assets/img/menu-vertical.png';
 const ChangeModal = ({children}: {children: any}) => {
     const [visible, setVisible] = useState<boolean>(false)
 
-    function toggleModal() {
+    function toggleModal(event: any) {
+        event.stopPropagation()
         setVisible(!visible)
     }
 

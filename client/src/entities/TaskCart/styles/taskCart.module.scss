@@ -1,3 +1,7 @@
+.cartWrapper {
+    position: relative;
+}
+
 .cart {
     width: 350px;
     height: 300px;
@@ -52,6 +56,8 @@
     display: none;
     align-items: center;
     justify-content: center;
+    
+    z-index: 1;
 }
 
 .visible {
@@ -66,4 +72,21 @@
     border-radius: 10px;
 
     position: relative;
+}
+
+.inform {
+    width: 300px;
+    position: relative;
+}
+
+.informActivities {
+    margin-top: -25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    padding: 0;
+    color: #101010;
 }

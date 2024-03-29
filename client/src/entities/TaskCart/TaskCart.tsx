@@ -7,6 +7,7 @@ import ChangeModal from '../CgangeModal/ChangeModal';
 import DeleteTaskFeature from '../../features/DeleteTaskFeature/DeleteListFeature';
 import ChangeTaskInfo from '../../features/ChangeTaskInfo/ChangeTaskInfo';
 import { useState } from 'react';
+import TaskActivitiesBlock from '../../features/TaskActivitiesBlock/TaskActivitiesBlock';
 
 const TaskCart = ({
     priority, 
@@ -24,25 +25,9 @@ const TaskCart = ({
     }
 
     return (
-        <div className={styles.cart} onClick={toggleModal}>
-            <ChangeModal>
-                <DeleteTaskFeature task_id={id} task_name={name} />
-                <ChangeTaskInfo id={id} name={name} deadline={deadline} descryption={description} priority={priority} />
-            </ChangeModal>
-            <h2 className={styles.taskName}>{name}</h2>
-            <p className={styles.description}>
-                {description}
-            </p>
-            <p className={styles.deadline}>
-                <img src={calendar} alt="calendar-icon" />
-                {date}
-            </p>
-            <PriorityBlock priority={priority} />
-            <MoveTo list_name={listName} task_id={id} task_name={name} />
-            <div className={`${styles.modalContainer} ${visible && styles.visible}`}>
-                <div className={styles.modalBlock}>
-                    <button onClick={toggleModal}>X</button>
-                    <h2 className={styles.taskName}>{name}</h2>
+        <div className={styles.cartWrapper}>
+            <div className={styles.cart} onClick={toggleModal}>
+                <h2 className={styles.taskName}>{name}</h2>
                     <p className={styles.description}>
                         {description}
                     </p>
@@ -51,6 +36,36 @@ const TaskCart = ({
                         {date}
                     </p>
                     <PriorityBlock priority={priority} />
+                    <MoveTo list_name={listName} task_id={id} task_name={name} />
+                </div>
+            <div >
+                <ChangeModal>
+                    <DeleteTaskFeature task_id={id} task_name={name} />
+                    <ChangeTaskInfo id={id} name={name} deadline={deadline} descryption={description} priority={priority} />
+                </ChangeModal>
+                <div className={`${styles.modalContainer} ${visible && styles.visible}`}>
+                    <div className={styles.modalBlock}>
+                       <div className={styles.inform}>
+                            <div className={styles.informActivities}>
+                                <button onClick={toggleModal}>X</button>
+                                <ChangeTaskInfo id={id} name={name} deadline={deadline} descryption={description} priority={priority} />
+                            </div>
+                            <h2>Task name:</h2>
+                            <h2 className={styles.taskName}>{name}</h2>
+                            <h2>deadline:</h2> 
+                            <p className={styles.deadline}>
+                                <img src={calendar} alt="calendar-icon" />
+                                {date}
+                            </p>
+                            <h2>priority</h2>
+                            <PriorityBlock priority={priority} />
+                            <h2>description: </h2>
+                            <p className={styles.description}>
+                                {description}
+                            </p>
+                       </div>
+                       {visible && <TaskActivitiesBlock id={id} />}
+                    </div>
                 </div>
             </div>
         </div>

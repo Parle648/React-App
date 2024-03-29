@@ -15,21 +15,9 @@ const ChangeTaskInfo = ({id, name, deadline, descryption, priority}: {
     const [visible, setVisible] = useState<boolean>(false);
 
     function toggleModal(event: any) {
+        event.stopPropagation()
         setVisible(!visible)
     }
-
-
-    // function updateTask(data: any) {
-    //     console.log(data);
-        
-    //     // changeTaskProperties({
-    //     //     id: id,
-    //     //     name: name,
-    //     //     property_name: 'string',
-    //     //     property_old: 'string',
-    //     //     property_new: 'string'
-    //     // })
-    // }
 
     return (
         <>

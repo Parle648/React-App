@@ -12,12 +12,12 @@ const DeleteTaskFeature = ({task_id, task_name}: {task_id: number, task_name: st
     function deleteListFunction() {
         deleteList({task_id, task_name})
         .then(() => dispatch(setTasks(tasks.filter((item: any) => item.id !== task_id))))
-        .then(() => toggleModal())
     }
 
     const [visible, setVisible] = useState<boolean>(false)
 
-    function toggleModal() {
+    function toggleModal(event: any) {
+        event.stopPropagation()
         setVisible(!visible)
     }
 
