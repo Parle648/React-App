@@ -4,5 +4,5 @@ export type TaskCartProps = {
     name: string,
     description: string,
     deadline: string,
-    listName: string
+    listName: string | undefined
 }
