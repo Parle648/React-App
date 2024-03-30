@@ -14,7 +14,6 @@ const TaskActivitiesBlock = ({id}: {id: number}) => {
     useEffect(() => {
         getTaskActivities(id)
         .then((data) => {
-            console.log(data);
             setActivties(data)
         })
     }, [tasks])
