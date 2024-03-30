@@ -1,12 +1,10 @@
-import TaskListsWidget from '../widgets/TaskListsWidget/TaskListsWidget';
-import TaskboardPanel from '../widgets/TaskboardPanel/TaskboardPanel';
+import MainPage from '../pages/MainPage/MainPage';
 
 function App() {
 
   return (
     <>
-      <TaskboardPanel />
-      <TaskListsWidget />
+      <MainPage />
     </>
   );
 }
