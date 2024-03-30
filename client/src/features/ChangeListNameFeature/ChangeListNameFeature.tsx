@@ -31,7 +31,7 @@ const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string})
                 
                     <h2 className={styles.inputTitle}>Enter new name for list</h2>
 
-                   <label>
+                   <label className={styles.label}>
                         <input type="text" {...register('list_name', {
                             required: 'enter new name for list',
                             pattern: {
@@ -39,7 +39,7 @@ const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string})
                                 message: 'List name should be write using english laguage'
                             }
                         })} />
-                        {errors.list_name && <span>{errors.list_name.message}</span>}
+                        {errors.list_name && <h4 className={styles.errorMessage}>{errors.list_name.message}</h4>}
                    </label>
 
                     <button type="submit" onSubmit={handleSubmit(sibmitChanges)} >rename</button>
