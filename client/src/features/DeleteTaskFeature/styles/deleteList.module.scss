@@ -47,6 +47,19 @@
     background-color: aliceblue;
 }
 
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: transparent;
+    border: 0;
+    font-size: 24px;
+    font-family: "Roboto";
+    color: #101010;
+
+    cursor: pointer;
+}
+
 .deleteBtn {
     width: 150px;
     height: 30px;

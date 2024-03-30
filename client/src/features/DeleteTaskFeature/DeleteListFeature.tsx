@@ -17,6 +17,9 @@ const DeleteTaskFeature = () => {
             </button>
             <div className={`${styles.modal} ${visible && styles.modalBlock}`}>
                 <div className={styles.modalOpen}>
+                    <button className={styles.close} onClick={() => setVisible()}>
+                        X
+                    </button>
                     You really want to delete this task?
                     <button className={styles.deleteBtn} onClick={() => deleteTask(taskContext?.props.id, taskContext?.props.name)}>delete</button>
                 </div>

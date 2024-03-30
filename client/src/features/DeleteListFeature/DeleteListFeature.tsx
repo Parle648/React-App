@@ -20,6 +20,9 @@ const DeleteListFeature = ({list_id, list_name}: {list_id: number, list_name: st
             </button>
             <div className={`${styles.modal} ${visible && styles.modalBlock}`}>
                 <div className={styles.modalOpen}>
+                    <button className={styles.close} onClick={() => setVisible()}>
+                        X
+                    </button>
                     You really want to delete this list?
                     <button className={styles.deleteBtn} onClick={deleteListFunction}>delete</button>
                 </div>
