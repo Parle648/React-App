@@ -15,7 +15,7 @@ Before getting started, make sure you have the following tools installed:
 
 1. **Clone the Repository:**
    ```bash
-   git clone [https://github.com/your/repository.git](https://github.com/Parle648/React-App.git)
+   git clone https://github.com/your/repository.git
 
 2. **After navigating to the React-App directory, run the command:**
    
