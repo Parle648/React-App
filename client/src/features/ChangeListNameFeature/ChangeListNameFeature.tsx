@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
 import styles from './styles/changeList.module.scss';
 import { useForm } from 'react-hook-form';
-import renameListRequest from './api/renameListRequest';
-import { useDispatch } from 'react-redux';
-import { setLists } from '../../shared/lib/slices/Lists';
 import plus from '../../shared/assets/img/plus.png';
+import useToggle from '../../shared/lib/hooks/useToggle';
+import renameList from './helpers/renameList';
 
 const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string}) => {
-    const [visible, setVisible] = useState<boolean>(false);
-
-    function toggleModal() {
-        setVisible(!visible)
-    }
+    const [visible, setVisible] = useToggle(false);
 
     const {
         register,
@@ -22,28 +16,18 @@ const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string})
         reset
     } = useForm<{list_name: string}>()
 
-    const dispatch = useDispatch();
-
-    function renameList(data: any) {
-        console.log(data);
-        renameListRequest({id: id, old_name: list_name, list_name: data.list_name})
-        .then((responsedata) => {
-            console.log(responsedata);
-            
-            if (responsedata.status === 200) {
-                dispatch(setLists(responsedata.lists))
-            }
-        })
+    function sibmitChanges(data: any) {
+        renameList(id, list_name, data.list_name)
         reset();
-        toggleModal();
+        setVisible();
     }
 
     return (
         <div>
-            <button className={styles.open} onClick={toggleModal}><img className={styles.plus} src={plus} alt="plus" /> Edit</button>
+            <button className={styles.open} onClick={() => setVisible()}><img className={styles.plus} src={plus} alt="plus" /> Edit</button>
             <div className={`${styles.modalBlock} ${visible && styles.visible}`}>
-                <form className={styles.form} onSubmit={handleSubmit(renameList)} >
-                    <button className={styles.close} onClick={toggleModal}>X</button>
+                <form className={styles.form} onSubmit={handleSubmit(sibmitChanges)} >
+                    <button className={styles.close} onClick={() => setVisible()}>X</button>
                 
                     <h2 className={styles.inputTitle}>Enter new name for list</h2>
 
@@ -54,7 +38,7 @@ const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string})
                         {errors.list_name && <span>{errors.list_name.message}</span>}
                    </label>
 
-                    <button type="submit" onSubmit={handleSubmit(renameList)} >rename</button>
+                    <button type="submit" onSubmit={handleSubmit(sibmitChanges)} >rename</button>
                 </form>
             </div>
         </div>

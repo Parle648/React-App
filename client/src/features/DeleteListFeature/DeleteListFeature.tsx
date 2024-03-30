@@ -1,29 +1,21 @@
 import deleteIcon from '../../shared/assets/img/delete-icon.png';
 import styles from './styles/deleteList.module.scss';
-import deleteList from './api/deleteList';
-import { useDispatch, useSelector } from 'react-redux';
-import { setLists } from '../../shared/lib/slices/Lists';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import useToggle from '../../shared/lib/hooks/useToggle';
+import deleteList from './helpers/deleteList';
 
 const DeleteListFeature = ({list_id, list_name}: {list_id: number, list_name: string}) => {
-    const dispatch = useDispatch();
+    const [visible, setVisible] = useToggle(false)
     const lists = useSelector((state: any) => state.Lists.value);
 
     function deleteListFunction() {
-        deleteList({list_id, list_name})
-        .then(() => dispatch(setLists(lists.filter((item: any) => item.id !== list_id))))
-        .then(() => toggleModal())
-    }
-
-    const [visible, setVisible] = useState<boolean>(false)
-
-    function toggleModal() {
-        setVisible(!visible)
+        deleteList(list_id, list_name, lists)
+        .then(() => setVisible())
     }
 
     return (
         <>
-            <button className={styles.block} onClick={toggleModal}>
+            <button className={styles.block} onClick={() => setVisible()}>
                 <img className={styles.basket} src={deleteIcon} alt="delete-icon" /> Delete
             </button>
             <div className={`${styles.modal} ${visible && styles.modalBlock}`}>
