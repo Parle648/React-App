@@ -6,6 +6,7 @@ import MoveTaskMessage from '../ShowActivitiesFeature/UI/MovetaskMessage/MoveTas
 import ChangeTaskMessage from '../ShowActivitiesFeature/UI/ChangeTaskMessage/ChangeTaskMessage';
 import DeleteTaskMessage from '../ShowActivitiesFeature/UI/DeleteTaskMessage/DeleteTaskMessage';
 import { useSelector } from 'react-redux';
+import { ActivitiesProps } from './types/activitiesProps';
 
 const TaskActivitiesBlock = ({id}: {id: number}) => {
     const [activities, setActivties] = useState([]);
@@ -21,14 +22,14 @@ const TaskActivitiesBlock = ({id}: {id: number}) => {
     return (
         <div className={styles.block}>
                 <div className={styles.header}>Task history</div>
-               {activities.map(({from, to, activity_type, task_name, list_name}: {from: string, to: string, activity_type: string, task_name: string, list_name: string}) => {
+               {activities.map(({from, to, activity_type, task_name, task_property}: ActivitiesProps) => {
                     switch (activity_type) {
                         case 'createTask':
                             return <CreateTaskMessage to={to} />
-                        case 'movetask':
+                        case 'movetask': 
                             return <MoveTaskMessage task_name={task_name} from={from} to={to} />
                         case 'changeTask':
-                            return <ChangeTaskMessage task_name={task_name} from={from} to={to} />
+                            return <ChangeTaskMessage task_name={task_name} from={from} to={to} property={task_property}/>
                         case 'deleteTask':
                             return <DeleteTaskMessage task_name={task_name} />
                         default:

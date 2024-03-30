@@ -8,6 +8,7 @@ import MoveTaskMessage from '../MovetaskMessage/MoveTaskMessage';
 import ChangeTaskMessage from '../ChangeTaskMessage/ChangeTaskMessage';
 import DeletelistMessage from '../DeleteListMessage/DeleteListMessage';
 import DeleteTaskMessage from '../DeleteTaskMessage/DeleteTaskMessage';
+import { ActivitiesProps } from '../../types/activitiesProps';
 
 const ActivitiesBlock = ({children}: {children: any}) => {
     const [activities, setActivities] = useState([]);
@@ -22,7 +23,7 @@ const ActivitiesBlock = ({children}: {children: any}) => {
             <div className={styles.innerBlock}>
                 <div className={styles.header}>History</div>
                 {children}
-                {activities.map(({from, to, activity_type, task_name, list_name}: {from: string, to: string, activity_type: string, task_name: string, list_name: string}) => {
+                {activities.map(({from, to, activity_type, task_name, list_name, task_property}: ActivitiesProps) => {
                     switch (activity_type) {
                         case 'createList':
                             return <CreateListMessage to={to} />
@@ -33,7 +34,7 @@ const ActivitiesBlock = ({children}: {children: any}) => {
                         case 'movetask':
                             return <MoveTaskMessage task_name={task_name} from={from} to={to} />
                         case 'changeTask':
-                            return <ChangeTaskMessage task_name={task_name} from={from} to={to} />
+                            return <ChangeTaskMessage task_name={task_name} from={from} to={to} property={task_property} />
                         case 'deleteList':
                             return <DeletelistMessage list_name={list_name} />
                         case 'deleteTask':
