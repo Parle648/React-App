@@ -3,16 +3,13 @@ import styles from './styles/deleteList.module.scss';
 import { useSelector } from 'react-redux';
 import useToggle from '../../shared/lib/hooks/useToggle';
 import deleteList from './helpers/deleteList';
-import { useContext } from 'react';
-import { ListContext } from '../../entities/List/context/listContext';
 
-const DeleteListFeature = () => {
+const DeleteListFeature = ({list_id, list_name}: {list_id: number, list_name: string}) => {
     const [visible, setVisible] = useToggle(false)
     const lists = useSelector((state: any) => state.Lists.value);
-    const listContext = useContext(ListContext);
 
     function deleteListFunction() {
-        deleteList(listContext.list_id, listContext.list_name, lists)
+        deleteList(list_id, list_name, lists)
         .then(() => setVisible())
     }
 
