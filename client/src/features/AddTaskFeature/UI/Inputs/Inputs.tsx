@@ -7,7 +7,11 @@ export function NameInput ({register, errors}: {register: UseFormRegister<CreteT
         <label>
             <h4 className={styles.title}>Add task name</h4>
             <input className={styles.input} type="text" {...register('name', {
-                required: 'enter task name'
+                required: 'enter task name',
+                pattern: {
+                    value: /^[a-zA-Z0-9\s_-]+$/,
+                    message: 'List name should be write using english laguage'
+                }
             })}/>
             {errors?.name && <h4 className={styles.error}>{errors.name.message}</h4>}
         </label>
@@ -19,7 +23,11 @@ export function StatusInput ({register, errors}: {register: UseFormRegister<Cret
         <label>
             <h4 className={styles.title}>Add task status</h4>
             <input className={styles.input} type="text" {...register('status', {
-                required: 'enter status'
+                required: 'enter status',
+                pattern: {
+                    value: /^[a-zA-Z0-9\s_-]+$/,
+                    message: 'Status name should be write using english laguage'
+                }
             })}/>
             {errors?.status && <h4 className={styles.error}>{errors.status.message}</h4>}
         </label>
@@ -41,7 +49,11 @@ export function PriorityInput ({register, errors}: {register: UseFormRegister<Cr
         <label>
             <h4 className={styles.title}>Add task priority</h4>
             <select className={styles.input} {...register('priority', {
-                required: 'enter priority'
+                required: 'enter priority',
+                pattern: {
+                    value: /^(low|middle|top)$/,
+                    message: 'Chose from low, middle or top'
+                }
             })}>
                 <option value="low">low</option>
                 <option value="middle">middle</option>
@@ -56,7 +68,11 @@ export function DescriptionInput ({register, errors}: {register: UseFormRegister
         <label>
             <h4 className={styles.title}>Add task description</h4>
             <input className={styles.input} type="textarea" {...register('description', {
-                required: 'enter description'
+                required: 'enter description',
+                maxLength: {
+                    value: 30,
+                    message: 'should be less then 60 characters'
+                }
             })}/>
             {errors?.description && <h4 className={styles.error}>{errors.description.message}</h4>}
         </label> 

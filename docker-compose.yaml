@@ -20,6 +20,8 @@ services:
       DATABASE_URL: postgresql://postgres:example@db:5432/postgres
     ports:
       - "3001:3001"
+    volumes:
+      - ./server:/app
     depends_on:
       - db
 
@@ -30,5 +32,7 @@ services:
     restart: always
     ports:
       - "3000:3000"
+    volumes:
+      - ./client:/app
     depends_on:
       - server
