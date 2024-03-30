@@ -110,3 +110,9 @@
 .formVisible {
     display: flex;
 }
+
+@media (max-width: 1440px) {
+    .openFormBtn {
+        width: 100px;
+    }
+}

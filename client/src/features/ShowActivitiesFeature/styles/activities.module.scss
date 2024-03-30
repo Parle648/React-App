@@ -20,3 +20,10 @@
     right: 12px;
     cursor: pointer;
 }
+
+@media (max-width: 1440px) {
+    .open {
+        width: 100px;
+        margin-right: 15px;
+    }
+}
