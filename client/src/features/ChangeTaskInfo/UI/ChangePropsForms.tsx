@@ -29,7 +29,12 @@ export function ChangeNameForm({task_id, task_name, old_value}: {task_id: number
             <label className={styles.changeInputBlock}>
                 <input type="text" placeholder={task_name} {...register('name', {
                     required: true,
+                    pattern: {
+                        value: /^[a-zA-Z0-9\s_-]+$/,
+                        message: 'List name should be write using english laguage'
+                    }
                 })} />
+                {errors?.name && <h4 className={styles.error}>{errors.name.message}</h4>}
                 <input className={styles.sendBtn}  type="submit" value="Change name" />
             </label>
         </form>
@@ -94,8 +99,17 @@ export function ChangeDescryptionForm({task_id, task_name, old_value}: {task_id:
             <h2>Enter here new task descryption</h2>
             <label className={styles.changeInputBlock}>
                 <input type="text" {...register('descryption', {
-                    required: true
+                    required: true,
+                    pattern: {
+                        value: /^[a-zA-Z0-9\s_-]+$/,
+                        message: 'description should be write using english laguage'
+                    },
+                    maxLength: {
+                        value: 30,
+                        message: 'description should be less than 30 characters'
+                    }
                 })} />
+                {errors?.descryption && <h4 className={styles.error}>{errors.descryption.message}</h4>}
                 <input className={styles.sendBtn}  type="submit" value="Change descryption" />
             </label>
         </form>
@@ -129,7 +143,11 @@ export function ChangePriorityForm({task_id, task_name, old_value}: {task_id: nu
             <h2>Chose here new priority for task</h2>
             <label className={styles.changeInputBlock}>
                 <select {...register('priority', {
-                    required: true
+                    required: true,
+                    pattern: {
+                        value: /^(low|middle|top)$/,
+                        message: 'List name should be write using english laguage'
+                    }
                 })} > 
                     <option value="low">low</option>
                     <option value="middle">middle</option>

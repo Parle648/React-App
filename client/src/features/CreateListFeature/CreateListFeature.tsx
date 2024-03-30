@@ -38,6 +38,10 @@ const CreateListFeature = () => {
                         <h4 className={styles.listTitle}>Enter name for list</h4>
                         <input className={styles.input} type="text" {...register('list_name', {
                             required: "Enter list name",
+                            pattern: {
+                                value: /^[a-zA-Z0-9\s_-]+$/,
+                                message: 'List name should be write using english laguage'
+                            }
                         })} />
                         {errors?.list_name && <span className={styles.errorMessage}>{errors.list_name.message}</span>}
                     </label>

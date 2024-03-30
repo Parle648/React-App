@@ -33,7 +33,11 @@ const ChangeListNameFeature = ({id, list_name}: {id: number, list_name: string})
 
                    <label>
                         <input type="text" {...register('list_name', {
-                            required: 'enter new name for list'
+                            required: 'enter new name for list',
+                            pattern: {
+                                value: /^[a-zA-Z0-9\s_-]+$/,
+                                message: 'List name should be write using english laguage'
+                            }
                         })} />
                         {errors.list_name && <span>{errors.list_name.message}</span>}
                    </label>
