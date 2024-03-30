@@ -1,6 +1,6 @@
 import { MoveTaskRequestDto } from "../types/moveTaskRequestDto"
 
-export default function moveTask({task_id, new_list_name, old_list_name, list_id, task_name}: MoveTaskRequestDto) {
+export default function moveTaskRequest({task_id, new_list_name, old_list_name, list_id, task_name}: MoveTaskRequestDto) {
     return new Promise((resolve, reject) => {
         try {
             resolve(fetch(`http://localhost:3001/tasks/${task_id}`, {

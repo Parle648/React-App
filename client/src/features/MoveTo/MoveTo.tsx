@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import styles from './styles/moveTo.module.scss';
 import arrow from '../../shared/assets/img/drop-down-arrow.png';
-import { useDispatch, useSelector } from 'react-redux';
-import moveTask from './api/moveTask';
-import { setTasks } from '../../shared/lib/slices/Tasks';
+import { useSelector } from 'react-redux';
 import { MoveToProps } from './types/MoveToProps';
+import moveTaskRequest from './api/moveTaskRequest';
+import moveTask from './helpers/moveTask';
 
 export const MoveTo = ({ list_name, task_id, task_name }: MoveToProps) => {
-    const dispatch = useDispatch();
     const lists = useSelector((state: any) => state.Lists.value);
     const [visible, setVisible] = useState<boolean>(false);
 
@@ -19,14 +18,14 @@ export const MoveTo = ({ list_name, task_id, task_name }: MoveToProps) => {
     function movetask(event: any) {
         event.stopPropagation();
         if (event.target.innerText !== list_name) {
-            moveTask({
+            moveTaskRequest({
                 task_id: task_id,
                 new_list_name: event.target.innerText,
                 old_list_name: list_name,
                 list_id: event.target.dataset.id,
                 task_name: task_name
             })
-            .then((data) => dispatch(setTasks(data.tasks)));
+            .then((data) => moveTask(data.tasks));
         };
     }
 
@@ -37,7 +36,6 @@ export const MoveTo = ({ list_name, task_id, task_name }: MoveToProps) => {
             </h3>
             <ol className={`${styles.list} ${visible && styles.listVisible}`}>
                 {lists.map((list: any) => {
-
                     return <li
                         className={styles.listTitle}
                         key={list.list_name}

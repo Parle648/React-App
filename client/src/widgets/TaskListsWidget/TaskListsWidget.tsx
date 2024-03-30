@@ -14,7 +14,7 @@ const TaskListsWidget = () => {
   
     useEffect(() => {
         getLists()
-        .then((data: any) => dispatch(setLists(data)));
+        .then((data: any) => dispatch(setLists(data.sort((a: any, b: any) => a.id - b.id))));
         getTasks()
         .then((data: any) => dispatch(setTasks(data.tasks)))
     }, [])

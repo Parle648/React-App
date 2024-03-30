@@ -6,7 +6,7 @@ export default function renameList(id: number, old_name: string, list_name: stri
     renameListRequest({id: id, old_name: old_name, list_name: list_name})
     .then((response) => {
         if (response.status === 200) {
-            store.dispatch(setLists(response.lists))
+            store.dispatch(setLists(response.lists.sort((a: any, b: any) => a.id - b.id)))
         } else {
             alert('something went wrong')
         }
