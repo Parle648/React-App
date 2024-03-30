@@ -1,8 +1,8 @@
 FROM node:18.17.1 AS client-builder
 
-WORKDIR /app
+WORKDIR /clientApp
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-CMD npm start
+CMD npm install && npm start
