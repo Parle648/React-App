@@ -21,15 +21,17 @@ const AddTaskForm = ({visible, children, list_id}: TaskFormProps) => {
     };
     
     return (
-        <form className={`${styles.form} ${visible && styles.visible}`} onSubmit={handleSubmit(sendTaskData)}>
-            {children}
-            <NameInput register={register} errors={errors}/>
-            <StatusInput register={register} errors={errors}/>
-            <DeadlineInput register={register} errors={errors}/>
-            <PriorityInput register={register} errors={errors}/>
-            <DescriptionInput register={register} errors={errors}/>
-            <button type="submit">+ Create</button>
-        </form>
+        <div className={`${styles.background} ${visible && styles.visible}`}>
+            <form className={styles.form} onSubmit={handleSubmit(sendTaskData)}>
+                {children}
+                <NameInput register={register} errors={errors}/>
+                <StatusInput register={register} errors={errors}/>
+                <DeadlineInput register={register} errors={errors}/>
+                <PriorityInput register={register} errors={errors}/>
+                <DescriptionInput register={register} errors={errors}/>
+                <button type="submit">+ Create</button>
+            </form>
+        </div>
     );
 };
 
