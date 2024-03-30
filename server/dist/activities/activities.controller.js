@@ -16,6 +16,7 @@ exports.ActivitiesController = void 0;
 const common_1 = require("@nestjs/common");
 const activities_service_1 = require("./activities.service");
 const client_1 = require("@prisma/client");
+const publicGuard_1 = require("../guards/publicGuard");
 let ActivitiesController = class ActivitiesController {
     constructor(activitiesService) {
         this.activitiesService = activitiesService;
@@ -73,6 +74,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ActivitiesController.prototype, "remove", null);
 exports.ActivitiesController = ActivitiesController = __decorate([
+    (0, common_1.UseGuards)(publicGuard_1.PublicGuard),
     (0, common_1.Controller)('activities'),
     __metadata("design:paramtypes", [activities_service_1.ActivitiesService])
 ], ActivitiesController);

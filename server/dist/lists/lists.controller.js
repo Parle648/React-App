@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListsController = void 0;
 const common_1 = require("@nestjs/common");
 const lists_service_1 = require("./lists.service");
+const publicGuard_1 = require("../guards/publicGuard");
 let ListsController = class ListsController {
     constructor(listsService) {
         this.listsService = listsService;
@@ -73,6 +74,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ListsController.prototype, "remove", null);
 exports.ListsController = ListsController = __decorate([
+    (0, common_1.UseGuards)(publicGuard_1.PublicGuard),
     (0, common_1.Controller)('lists'),
     __metadata("design:paramtypes", [lists_service_1.ListsService])
 ], ListsController);

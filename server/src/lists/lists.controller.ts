@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { ListsService } from './lists.service';
-import { Prisma } from '@prisma/client';
+import { PublicGuard } from 'src/guards/publicGuard';
 
+@UseGuards(PublicGuard) 
 @Controller('lists')
 export class ListsController {
   constructor(private readonly listsService: ListsService) {}
