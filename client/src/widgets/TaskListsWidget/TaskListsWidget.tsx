@@ -17,7 +17,7 @@ const TaskListsWidget = () => {
         .then((data: any) => dispatch(setLists(data)));
         getTasks()
         .then((data: any) => dispatch(setTasks(data.tasks)))
-    }, [])
+    }, [lists])
 
     return (
         <div className={styles.block}>
