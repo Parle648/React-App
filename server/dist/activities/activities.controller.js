@@ -15,14 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ActivitiesController = void 0;
 const common_1 = require("@nestjs/common");
 const activities_service_1 = require("./activities.service");
-const client_1 = require("@prisma/client");
 const publicGuard_1 = require("../guards/publicGuard");
 let ActivitiesController = class ActivitiesController {
     constructor(activitiesService) {
         this.activitiesService = activitiesService;
-    }
-    create(createActivityDto) {
-        return this.activitiesService.create(createActivityDto);
     }
     findAll() {
         return this.activitiesService.findAll();
@@ -30,21 +26,8 @@ let ActivitiesController = class ActivitiesController {
     findOne(id) {
         return this.activitiesService.findOne(+id);
     }
-    update(id, updateActivityDto) {
-        return this.activitiesService.update(+id, updateActivityDto);
-    }
-    remove(id) {
-        return this.activitiesService.remove(+id);
-    }
 };
 exports.ActivitiesController = ActivitiesController;
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], ActivitiesController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
@@ -58,21 +41,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ActivitiesController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
-], ActivitiesController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], ActivitiesController.prototype, "remove", null);
 exports.ActivitiesController = ActivitiesController = __decorate([
     (0, common_1.UseGuards)(publicGuard_1.PublicGuard),
     (0, common_1.Controller)('activities'),

@@ -26,9 +26,6 @@ let ListsController = class ListsController {
     findAll() {
         return this.listsService.findAll();
     }
-    findOne(id) {
-        return this.listsService.findOne(+id);
-    }
     update(id, updateListDto) {
         return this.listsService.update(+id, updateListDto);
     }
@@ -50,13 +47,6 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], ListsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], ListsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),

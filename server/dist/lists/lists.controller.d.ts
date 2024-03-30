@@ -20,10 +20,6 @@ export declare class ListsController {
         id: number;
         list_name: string;
     }[]>;
-    findOne(id: string): Promise<{
-        id: number;
-        list_name: string;
-    }>;
     update(id: string, updateListDto: any): Promise<{
         status: number;
         lists: {

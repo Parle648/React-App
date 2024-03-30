@@ -17,11 +17,6 @@ export class ListsController {
     return this.listsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.listsService.findOne(+id);
-  }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateListDto: any) {
     return this.listsService.update(+id, updateListDto);
